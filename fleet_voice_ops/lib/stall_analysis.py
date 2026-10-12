@@ -73,12 +73,15 @@ def _rule_based_hypotheses(signals: dict) -> list[dict]:
 
 
 def _recommended_action(signals: dict, hypotheses: list[dict]) -> str:
+    """推奨アクションを生死と整合させる — 稼働中セッションへのresumeは
+    実測で拒否される(interrupt-test-evidence.md)ため指さない。"""
     top_cause = hypotheses[0]["cause"]
+    dead = signals.get("status") == "dead"
     if top_cause == "waiting_on_human_input":
-        return "resume_with_confirmation"
+        return "respond_to_pending_question"
     if top_cause == "blocked_by_unresolved_error":
-        return "inspect_error_before_resume"
-    return "resume_with_confirmation"
+        return "resume_with_confirmation" if dead else "inspect_error_before_resume"
+    return "resume_with_confirmation" if dead else "monitor_or_send_followup"
 
 
 def analyze_stall(session_id: str, signals: dict) -> dict:

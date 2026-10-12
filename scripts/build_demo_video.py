@@ -166,10 +166,18 @@ def _fixture_fleet_text() -> str:
 
 
 def _fixture_stall_text() -> str:
+    """analyze_stallの出力を画面に収まる形へ凝縮(全JSONは720pに収まらない)。
+    仮説=1行×3件+推奨アクションだけ見せる。"""
     os.environ["FVO_DATA_SOURCE"] = "fixture"
     from fleet_voice_ops.app.tools import analyze_stall
-    return "$ analyze_stall('demo-birch')\n" + json.dumps(
-        analyze_stall("demo-birch"), indent=2, ensure_ascii=False)
+    r = analyze_stall("demo-birch")
+    lines = [f"$ analyze_stall('{r['session_id']}')", "", "hypotheses:"]
+    for h in r["hypotheses"]:
+        ev = "+".join(h["evidence_signals"])
+        lines.append(f"  - {h['cause']}  ({h['confidence']})")
+        lines.append(f"      evidence: {ev}")
+    lines += ["", f"recommended_action: {r['recommended_action']}"]
+    return "\n".join(lines)
 
 
 def _resume_text() -> str:
