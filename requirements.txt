@@ -1,3 +1,4 @@
 pytest
 import-linter
 mcp==2.3.0  # Streamable HTTP対応・spec 2025-11-25系(MCPServer API、旧FastMCPはmcp<2)
+piper-tts==1.8.0  # 動画ナレーション生成(scripts/build_demo_video.pyのみ使用・提出物の再現用)
