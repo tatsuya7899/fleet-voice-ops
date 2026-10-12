@@ -147,13 +147,44 @@ re-attaching to a running session was measured to fail.
 ============================================================
 Project Media(画像ギャラリー — submit/media/ をこの順でアップ)
 ============================================================
-00_cover.png          — タイトルカバー(先頭に置く)
-01_kitchen_voice.png  — Kitchen voice round-trip (Scene 1)
-02_fleet_status.png   — fleet_status output: 3-state liveness
-03_hypotheses.png     — analyze_stall: hypotheses + recommended action
-04_voice_approval.png — voice-approved resume (dead session, dry-run)
-05_boundaries.png     — honest boundary card (verified vs. not yet)
-06_title.png          — closing card
+各画像のキャプション(英語・そのまま貼る):
+
+00_cover.png
+fleet-voice-ops — voice observability for parallel coding agents.
+Ask from the kitchen; know what is stalled or dead; approve a safe
+resume by voice. (Alexa+ track, Amazon Developer Hackathon 2026)
+
+01_kitchen_voice.png
+Scene 1 — no screen in sight. Cooking, the user asks "anything going on
+with my agents?" The answer: one session waiting for input for 30
+minutes, and one died with an error.
+
+02_fleet_status.png
+Real output of the fleet_status tool. Four sessions classified by PID
+liveness and recent activity — active, stalled_suspect, dead. Only
+allowlisted fields are emitted; conversation contents never leave the box.
+
+03_hypotheses.png
+analyze_stall doesn't just flag a stall — it returns ranked hypotheses
+with confidence and the evidence signals behind them, then recommends
+one action. Here: waiting_on_human_input (high) with
+respond_to_pending_question.
+
+04_voice_approval.png
+The write path behind human-in-the-loop voice approval. The user
+confirms by speaking the session name — never a number — and the dead
+session's resume fires (dry-run shown). Live sessions are refused:
+re-attaching was measured to fail.
+
+05_boundaries.png
+Honest boundaries, on screen. The demo runs on a fixture so no private
+data appears; the real reader exists and reads actual session state;
+a real Alexa+ device and real resume execution remain unverified.
+
+06_title.png
+Voice observability for parallel coding agents — an open MCP server
+(spec 2025-11-25, Streamable HTTP): four tools, three states, one
+voice approval.
 
 ============================================================
 Product feedback(必須欄 — submit/product-feedback.mdの本文を貼る)
