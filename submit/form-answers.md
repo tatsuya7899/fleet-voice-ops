@@ -145,6 +145,17 @@ Piper TTS / ffmpeg
 re-attaching to a running session was measured to fail.
 
 ============================================================
+Project Media(画像ギャラリー — submit/media/ をこの順でアップ)
+============================================================
+00_cover.png          — タイトルカバー(先頭に置く)
+01_kitchen_voice.png  — Kitchen voice round-trip (Scene 1)
+02_fleet_status.png   — fleet_status output: 3-state liveness
+03_hypotheses.png     — analyze_stall: hypotheses + recommended action
+04_voice_approval.png — voice-approved resume (dead session, dry-run)
+05_boundaries.png     — honest boundary card (verified vs. not yet)
+06_title.png          — closing card
+
+============================================================
 Product feedback(必須欄 — submit/product-feedback.mdの本文を貼る)
 ============================================================
 (submit/product-feedback.md を開いて全文貼る)
