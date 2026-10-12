@@ -2,3 +2,4 @@ venv/
 *.pyc
 __pycache__/
 submit/video_build/
+submit/.audit/
