@@ -147,44 +147,28 @@ re-attaching to a running session was measured to fail.
 ============================================================
 Project Media(画像ギャラリー — submit/media/ をこの順でアップ)
 ============================================================
-各画像のキャプション(英語・そのまま貼る):
+各画像のキャプション(英語・そのまま貼る・各140字以内):
 
 00_cover.png
-fleet-voice-ops — voice observability for parallel coding agents.
-Ask from the kitchen; know what is stalled or dead; approve a safe
-resume by voice. (Alexa+ track, Amazon Developer Hackathon 2026)
+Voice observability for parallel coding agents. Ask from the kitchen, approve a resume by voice. Alexa+ track.
 
 01_kitchen_voice.png
-Scene 1 — no screen in sight. Cooking, the user asks "anything going on
-with my agents?" The answer: one session waiting for input for 30
-minutes, and one died with an error.
+No screen in sight. The user asks "anything going on?" — one session waits for input 30 min, one died with an error.
 
 02_fleet_status.png
-Real output of the fleet_status tool. Four sessions classified by PID
-liveness and recent activity — active, stalled_suspect, dead. Only
-allowlisted fields are emitted; conversation contents never leave the box.
+fleet_status output: 4 sessions classified by PID liveness — active, stalled_suspect, dead. Contents never emitted.
 
 03_hypotheses.png
-analyze_stall doesn't just flag a stall — it returns ranked hypotheses
-with confidence and the evidence signals behind them, then recommends
-one action. Here: waiting_on_human_input (high) with
-respond_to_pending_question.
+analyze_stall returns ranked hypotheses with confidence and evidence, then one recommended action — not just a flag.
 
 04_voice_approval.png
-The write path behind human-in-the-loop voice approval. The user
-confirms by speaking the session name — never a number — and the dead
-session's resume fires (dry-run shown). Live sessions are refused:
-re-attaching was measured to fail.
+Voice approval requires the session name, never a number. Dead-session resume fires; live sessions are refused.
 
 05_boundaries.png
-Honest boundaries, on screen. The demo runs on a fixture so no private
-data appears; the real reader exists and reads actual session state;
-a real Alexa+ device and real resume execution remain unverified.
+Honest boundaries: demo on fixture (real reader exists), no Alexa+ device yet, resume stays dry-run.
 
 06_title.png
-Voice observability for parallel coding agents — an open MCP server
-(spec 2025-11-25, Streamable HTTP): four tools, three states, one
-voice approval.
+An open MCP server (spec 2025-11-25, Streamable HTTP): four tools, three states, one voice approval.
 
 ============================================================
 Product feedback(必須欄 — submit/product-feedback.mdの本文を貼る)
