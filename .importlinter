@@ -1,0 +1,12 @@
+[importlinter]
+root_packages =
+    fleet_voice_ops
+
+[importlinter:contract:dependency-direction]
+name = Layered architecture (app -> lib, one-directional)
+type = layers
+layers =
+    app
+    lib
+containers =
+    fleet_voice_ops

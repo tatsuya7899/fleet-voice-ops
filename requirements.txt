@@ -1,0 +1,3 @@
+pytest
+import-linter
+mcp==2.3.0  # Streamable HTTP対応・spec 2025-11-25系(MCPServer API、旧FastMCPはmcp<2)

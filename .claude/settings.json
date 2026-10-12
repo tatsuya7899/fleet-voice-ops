@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.git-credentials)",
+      "Read(./.clasprc.json)",
+      "Read(**/credentials.json)",
+      "Read(**/token.json)"
+    ]
+  }
+}
