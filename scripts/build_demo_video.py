@@ -106,9 +106,29 @@ def _concat_audio(parts: list[Path], gap_s: float, out: Path) -> Path:
 
 
 def _scene_video(scene_id: str, dur: float, title_file: Path, body_file: Path | None,
-                 accent: str, out: Path) -> Path:
+                 accent: str, out: Path, video_src: Path | None = None) -> Path:
     """1シーンの映像(色面+タイトル+本文)。音声は後でmux。
-    drawtextはtext=内のカンマ等でfilterchainが壊れるため全てtextfile経由。"""
+    drawtextはtext=内のカンマ等でfilterchainが壊れるため全てtextfile経由。
+    video_src(生成クリップ等)があればループ・リサイズして下地にする。"""
+    if video_src and video_src.exists():
+        # クリップ下地: ループして尺合わせ・1280x720へスケール/クロップ。
+        # タイトルは上部・本文は下部に半透明ボックス付きで重ねる。
+        filters = [
+            f"scale={W}:{H}:force_original_aspect_ratio=increase",
+            f"crop={W}:{H}",
+            f"drawtext=fontfile={FONT}:textfile='{title_file}':fontsize=40:"
+            f"fontcolor={accent}:x=40:y=40:box=1:boxcolor=black@0.55:boxborderw=14",
+        ]
+        if body_file:
+            filters.append(
+                f"drawtext=fontfile={MONO}:textfile='{body_file}':fontsize=28:"
+                f"fontcolor={FG}:x=40:y=h-th-60:line_spacing=10:"
+                f"box=1:boxcolor=black@0.55:boxborderw=14")
+        _run(["ffmpeg", "-y", "-stream_loop", "-1", "-i", str(video_src),
+              "-t", str(dur), "-vf", ",".join(filters),
+              "-pix_fmt", "yuv420p", "-an", str(out)])
+        return out
+
     filters = [
         f"drawtext=fontfile={FONT}:textfile='{title_file}':fontsize=44:fontcolor={accent}:"
         f"x=60:y=50",
@@ -178,6 +198,7 @@ def main() -> int:
                     "         for input (30 min), and one died\n"
                     "         with an error.",
             "min_dur": 8.0,
+            "video": ROOT / "submit" / "assets" / "scene01.mp4",
         },
         {
             "id": "02_fleet",
@@ -270,7 +291,8 @@ def main() -> int:
 
         # 3. 映像+音声mux
         vid = _scene_video(sc["id"], dur, title_file, body_file, sc["accent"],
-                           OUT_DIR / f"{sc['id']}_v.mp4")
+                           OUT_DIR / f"{sc['id']}_v.mp4",
+                           video_src=sc.get("video"))
         scene_vids.append(_mux(vid, audio, dur, OUT_DIR / f"{sc['id']}.mp4"))
         print(f"scene {sc['id']}: {dur:.1f}s")
 
