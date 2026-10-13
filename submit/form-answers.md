@@ -1,8 +1,8 @@
 # 提出フォーム転記用 — fleet-voice-ops
 
-※このファイルはフォーム各欄への転記用。見出し行(===で囲んだ部分)は欄の名前で、
-その下の本文をそのまま貼る。===の区切り線自体は貼らない。
-Devpostの欄名は実画面と多少ずれることがある — 近い欄に対応させること。
+※このファイルはフォーム各欄への転記用。**Devpostフォームの実際の欄順に並んでいる** —
+上から順に、その下の本文をそのまま貼る。===の区切り線自体は貼らない。
+末尾「補足」は欄ではなく作業メモ。
 
 ============================================================
 Project name
@@ -14,11 +14,6 @@ Elevator pitch(短い一文・タグライン)
 ============================================================
 Ask from the kitchen — hear which of your parallel coding agents is stuck or
 dead, and approve a safe resume by voice. Voice observability for agent fleets.
-
-============================================================
-Track
-============================================================
-Alexa+
 
 ============================================================
 Inspiration
@@ -105,44 +100,9 @@ Built with
 python, mcp, streamable-http, devin-cli, ngrok, ffmpeg, piper-tts, pytest
 
 ============================================================
-GitHub repository
-============================================================
-https://github.com/tatsuya7899/fleet-voice-ops
-
-============================================================
 Demo video URL
 ============================================================
 https://youtu.be/kPtD3aMYqDE
-
-============================================================
-YouTube動画 — タイトル(転記用)
-============================================================
-fleet-voice-ops — Voice observability for parallel coding agents (Amazon Developer Hackathon)
-
-============================================================
-YouTube動画 — 説明文(転記用)
-============================================================
-fleet-voice-ops demo — "Build, Ship, Shape: Amazon Developer Hackathon"
-(Alexa+ track) submission.
-
-Ask from the kitchen which parallel coding agents are stalled or dead —
-then approve a safe resume by voice. A self-hosted MCP server
-(spec 2025-11-25, Streamable HTTP) with human-in-the-loop voice approval.
-
-■ What's in the video
-・Kitchen voice round-trip (generated b-roll footage)
-・fleet_status / analyze_stall output rendered from the real tool
-・Voice-approved resume of a dead session (dry-run)
-・Honest boundary card: what is verified vs. not yet
-
-■ Links
-・Repository: https://github.com/tatsuya7899/fleet-voice-ops
-
-Tech: Python / MCP SDK (Streamable HTTP) / devin CLI / ngrok /
-Piper TTS / ffmpeg
-
-※ Resume is a dry-run by default. Live sessions are refused by design —
-re-attaching to a running session was measured to fail.
 
 ============================================================
 Project Media(画像ギャラリー — submit/media/ をこの順でアップ)
@@ -196,58 +156,58 @@ Canada province
 N/A
 
 ============================================================
-Primary Track(s) — Select all that apply
+Which Primary Track(s)?(Select all that apply)
 ============================================================
 Alexa+ のみ(Fire TV / BeeRing は要件を満たさないので選ばない)
 
 ============================================================
-Code repository URL(GitHub)
+URL to code repository for judging and testing on GitHub
 ============================================================
 https://github.com/tatsuya7899/fleet-voice-ops
 
 ============================================================
-New or existing prior to August 31, 2026?
+Is your project new or existing prior to August 31, 2026?
 ============================================================
 New project(このハッカソン期間中に新規作成。初回コミット=2026-10-13)
 
 ============================================================
-If existing project — updates during the period
+(Conditional) Existing project — updates during the period
 ============================================================
 N/A(new project)
 
 ============================================================
-AWS Builder Mini Challenge?
+Are you submitting for the AWS Builder Mini Challenge?
 ============================================================
 No — AWSサービス(Bedrock/AgentCore/Strands等)は未使用。
 ローカルMCPサーバー+ngrok構成のため対象外。
 
 ============================================================
-AWS services incorporated(AWS Builder選択時のみ)
+(Conditional) AWS services incorporated and how
 ============================================================
 N/A
 
 ============================================================
-Open Source Mini Challenge?
+Are you submitting for the Open Source Mini Challenge?
 ============================================================
 Yes — ハッカソン期間中に新規のOSSリポジトリ(MIT License)として作成。
 
 ============================================================
-Open Source — Contribution URL
+Open Source Mini Challenge — Contribution URL
 ============================================================
 https://github.com/tatsuya7899/fleet-voice-ops
 
 ============================================================
-Open Source — Project Repository URL
+Open Source Mini Challenge — Project Repository URL
 ============================================================
 https://github.com/tatsuya7899/fleet-voice-ops
 
 ============================================================
-Open Source — GitHub Username
+Open Source Mini Challenge — GitHub Username
 ============================================================
 tatsuya7899
 
 ============================================================
-Open Source — what you did / how it works / why it matters
+Open Source Mini Challenge — what you did / how it works / why it matters
 ============================================================
 Created a new MIT-licensed open-source MCP server during the hackathon
 window (first commit Oct 13, 2026). It turns parallel coding-agent sessions
@@ -271,7 +231,7 @@ reproducible demo-video pipeline so others can adapt the pattern.
    Alexa+ hackathon/developer landing page.
 
 ============================================================
-[Optional] Friction Log(URL欄 — submit/friction-log.md の公開URLを貼る)
+[Optional] Friction Log(URL欄)
 ============================================================
 https://github.com/tatsuya7899/fleet-voice-ops/blob/master/submit/friction-log.md
 
@@ -279,10 +239,9 @@ https://github.com/tatsuya7899/fleet-voice-ops/blob/master/submit/friction-log.m
 [Optional] Project Testing Link
 ============================================================
 https://github.com/tatsuya7899/fleet-voice-ops
-(セットアップ手順・テスト・証拠文書はリポジトリ内)
 
 ============================================================
-Feedback Question 1: tools/APIs/SDKs used and for what
+Feedback Question 1: Which developer tools, APIs, and SDKs did you use and for what?
 ============================================================
 - MCP Python SDK (mcp==2.3.0) — the whole product: a self-hosted MCP
   server over Streamable HTTP at spec 2025-11-25, exposing 4 tools.
@@ -296,7 +255,7 @@ Feedback Question 1: tools/APIs/SDKs used and for what
 - Piper TTS + ffmpeg — fully automated generation of the demo video.
 
 ============================================================
-Feedback Question 2: what worked well
+Feedback Question 2: For each tool, what worked well?
 ============================================================
 - MCP SDK: the spec is readable and tool registration is declarative —
   zero to a serving endpoint in under an hour.
@@ -306,7 +265,7 @@ Feedback Question 2: what worked well
   friction-logging part of the artifact — excellent incentive design.
 
 ============================================================
-Feedback Question 3: what needs work
+Feedback Question 3: For each tool, what needs work?
 ============================================================
 - MCP SDK: no documented spec-version ↔ SDK-class mapping; pinning the
   right Streamable HTTP surface took trial and error (Friction Log #1).
@@ -320,7 +279,7 @@ Feedback Question 3: what needs work
   inside specific guides, not on the main hackathon page (Friction Log #4).
 
 ============================================================
-Feedback Question 4: onboarding experience
+Feedback Question 4: How was your onboarding experience?
 ============================================================
 - MCP SDK: fast for hello-world (working endpoint in under an hour),
   slower for transport details — had to read SDK source to confirm which
@@ -331,7 +290,7 @@ Feedback Question 4: onboarding experience
   discovering what is NOT available to hackathon entrants, not building.
 
 ============================================================
-Feedback Question 5: would you build with these again? Why
+Feedback Question 5: Would you build with these devices and services again?
 ============================================================
 Yes. The MCP standard is the right call — a self-hosted Streamable-HTTP
 server is a clean contract that also works for non-Alexa clients, and the
@@ -346,7 +305,7 @@ Eligibility checkboxes(3つ全てチェック)
     employee or agent of the Promotion Entities
 
 ============================================================
-Which AI tools have you leveraged?
+Which AI tools have you leveraged while working on this project?
 ============================================================
 Devin (Cognition's AI software engineer) as the primary implementation
 agent for the MCP server, tests, and demo-video pipeline; Gemini/Veo to
@@ -354,23 +313,17 @@ generate the kitchen b-roll clip in Scene 1 of the demo; Piper local
 neural TTS for all narration voices.
 
 ============================================================
-Level of learning derived from the project(ドロップダウン)
+Describe the level of learning you/your team derived from the project
 ============================================================
-(選択肢の最上位の正直なものを選ぶ — 実際に学んだ内容は
-「What we learned」欄参照: 音声可観測性は音声制御と別物・
-mtime遅延の実測・ACP再アタッチ不可の実測)
+(ドロップダウン — 選択肢の中で最上位の正直なものを選ぶ。
+学んだ内容は「What we learned」欄参照: 音声可観測性は音声制御と別物・
+transcript mtimeの24分遅延・ACPのライブ再アタッチ不可、いずれも実測)
 
 ============================================================
-AI value for your career(ドロップダウン)
+Did you gain AI value that you can use in your career?
 ============================================================
 Yes — AIエージェント自身の運用監視(voice observability)をテーマにした
-ため、手法自体がそのまま実務に使える。
-
-============================================================
-Product feedback(旧形式の全文 — 参考・product-feedback.md)
-============================================================
-(submit/product-feedback.md を開いて全文 — 上のFeedback Q1-5に
-分解済みのため、個別欄があるフォームではQ1-5を使う)
+ため、手法がそのまま実務に使える。
 
 ============================================================
 補足(フォーム欄なし・作業メモ)
@@ -379,7 +332,34 @@ Product feedback(旧形式の全文 — 参考・product-feedback.md)
 - repo要件: public + OSSライセンス(MIT同梱済み)。非公開にする場合は
   testing@devpost.com と Amazon側ユーザー名をCollaboratorに追加する必要あり
 - 動画要件: 3分未満・YouTube or Vimeo・public・英語(本動画は83秒・英語)
-- 提出後のrepo凍結ルールは本ハッカソンには無い(vol5の規則・ここでは不要)
 - Friction Logは最大+10%の加点要素 — submit/friction-log.md に必須形式
   (task/steps/expected vs actual/severity/workaround/suggestion)で4件
   記入済み。フォームのFriction Log欄はURLなのでGitHub上のこのファイルを指す
+
+--- YouTube動画のタイトル・説明文(既にアップ済み・変更する場合のみ使う) ---
+
+タイトル:
+fleet-voice-ops — Voice observability for parallel coding agents (Amazon Developer Hackathon)
+
+説明文:
+fleet-voice-ops demo — "Build, Ship, Shape: Amazon Developer Hackathon"
+(Alexa+ track) submission.
+
+Ask from the kitchen which parallel coding agents are stalled or dead —
+then approve a safe resume by voice. A self-hosted MCP server
+(spec 2025-11-25, Streamable HTTP) with human-in-the-loop voice approval.
+
+■ What's in the video
+・Kitchen voice round-trip (generated b-roll footage)
+・fleet_status / analyze_stall output rendered from the real tool
+・Voice-approved resume of a dead session (dry-run)
+・Honest boundary card: what is verified vs. not yet
+
+■ Links
+・Repository: https://github.com/tatsuya7899/fleet-voice-ops
+
+Tech: Python / MCP SDK (Streamable HTTP) / devin CLI / ngrok /
+Piper TTS / ffmpeg
+
+※ Resume is a dry-run by default. Live sessions are refused by design —
+re-attaching to a running session was measured to fail.
