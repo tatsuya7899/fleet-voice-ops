@@ -25,6 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 THRESHOLD = 90.0
 LIVE_HEALTH_URL = ""  # デプロイ後にここへ本番URLの health/root エンドポイントを設定する
+VIDEO_URL = "https://youtu.be/kPtD3aMYqDE"  # YouTube公開版の提出動画(2026-10-13)
 
 SECRET_PATTERNS = [
     re.compile(r"AIza[0-9A-Za-z_\-]{35}"),
@@ -275,7 +276,10 @@ def add_manual_gates(report: Report, skip_live: bool) -> None:
         report.add_gated("本番デプロイURL", "LIVE_HEALTH_URL未設定。デプロイ後にこのファイルへURLを設定し人間が確認")
     else:
         report.add_gated("本番デプロイURL", f"{LIVE_HEALTH_URL} — 到達性を人間が確認")
-    report.add_gated("動画アップロード", "submit/demo.mp4 を自作のうえ提出先の要求経路(YouTube等)へアップロードしURLを登録したか人間が確認")
+    if VIDEO_URL:
+        report.add_gated("動画アップロード", f"{VIDEO_URL} — public再生できるか人間が確認")
+    else:
+        report.add_gated("動画アップロード", "submit/demo.mp4 を要求経路(YouTube等)へアップロードしURLを登録したか人間が確認")
     report.add_gated("提出フォーム送信", "提出フォーム・ダッシュボードから送信したか人間が確認")
 
 
