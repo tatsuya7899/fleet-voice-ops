@@ -171,9 +171,206 @@ Honest boundaries: demo on fixture (real reader exists), no Alexa+ device yet, r
 An open MCP server (spec 2025-11-25, Streamable HTTP): four tools, three states, one voice approval.
 
 ============================================================
-Product feedback(必須欄 — submit/product-feedback.mdの本文を貼る)
+Additional info — Upload a File(任意・35MB)
 ============================================================
-(submit/product-feedback.md を開いて全文貼る)
+(空で可。証拠を付けたい場合のみ docs/ をzipで添付)
+
+============================================================
+Submitter Type
+============================================================
+Individual
+
+============================================================
+Organization Name
+============================================================
+N/A
+
+============================================================
+Submitter Country of Residence
+============================================================
+Japan
+
+============================================================
+Canada province
+============================================================
+N/A
+
+============================================================
+Primary Track(s) — Select all that apply
+============================================================
+Alexa+ のみ(Fire TV / BeeRing は要件を満たさないので選ばない)
+
+============================================================
+Code repository URL(GitHub)
+============================================================
+https://github.com/tatsuya7899/fleet-voice-ops
+
+============================================================
+New or existing prior to August 31, 2026?
+============================================================
+New project(このハッカソン期間中に新規作成。初回コミット=2026-10-13)
+
+============================================================
+If existing project — updates during the period
+============================================================
+N/A(new project)
+
+============================================================
+AWS Builder Mini Challenge?
+============================================================
+No — AWSサービス(Bedrock/AgentCore/Strands等)は未使用。
+ローカルMCPサーバー+ngrok構成のため対象外。
+
+============================================================
+AWS services incorporated(AWS Builder選択時のみ)
+============================================================
+N/A
+
+============================================================
+Open Source Mini Challenge?
+============================================================
+Yes — ハッカソン期間中に新規のOSSリポジトリ(MIT License)として作成。
+
+============================================================
+Open Source — Contribution URL
+============================================================
+https://github.com/tatsuya7899/fleet-voice-ops
+
+============================================================
+Open Source — Project Repository URL
+============================================================
+https://github.com/tatsuya7899/fleet-voice-ops
+
+============================================================
+Open Source — GitHub Username
+============================================================
+tatsuya7899
+
+============================================================
+Open Source — what you did / how it works / why it matters
+============================================================
+Created a new MIT-licensed open-source MCP server during the hackathon
+window (first commit Oct 13, 2026). It turns parallel coding-agent sessions
+into a voice-queryable fleet: four MCP tools (fleet_status, whats_stuck,
+analyze_stall, request_resume) classify liveness from PID checks and
+activity timestamps — never conversation contents — and gate the only
+write action behind spoken session-name confirmation, dry-run by default.
+It matters because parallel agent work is becoming common, but "what is my
+fleet doing right now?" has no voice-first answer; the repo ships working
+code, an allowlist-enforced privacy boundary, 16 tests, and a fully
+reproducible demo-video pipeline so others can adapt the pattern.
+
+============================================================
+[Optional] Feature Requests
+============================================================
+1. (Critical) Publish the spec-version ↔ SDK-version mapping for the MCP
+   Python SDK (spec 2025-11-25) in one canonical table.
+2. (Important) State the partner-only gating of the Alexa+ add-on CLI and
+   Web Simulator on every setup-guide page, not only the docs home.
+3. (Nice-to-have) Surface @alexa-ai/addon-local-inspector on the main
+   Alexa+ hackathon/developer landing page.
+
+============================================================
+[Optional] Friction Log(URL欄 — submit/friction-log.md の公開URLを貼る)
+============================================================
+https://github.com/tatsuya7899/fleet-voice-ops/blob/master/submit/friction-log.md
+
+============================================================
+[Optional] Project Testing Link
+============================================================
+https://github.com/tatsuya7899/fleet-voice-ops
+(セットアップ手順・テスト・証拠文書はリポジトリ内)
+
+============================================================
+Feedback Question 1: tools/APIs/SDKs used and for what
+============================================================
+- MCP Python SDK (mcp==2.3.0) — the whole product: a self-hosted MCP
+  server over Streamable HTTP at spec 2025-11-25, exposing 4 tools.
+- Alexa+ add-on developer docs (developer.amazon.com) — to understand what
+  a self-hosted MCP server must look like to be Alexa+-compatible (auth
+  surface, error responses, discovery).
+- ngrok — public tunnel for end-to-end reachability testing from a generic
+  MCP client.
+- devin CLI — session metadata source (liveness/activity fields) for the
+  agent fleet being observed.
+- Piper TTS + ffmpeg — fully automated generation of the demo video.
+
+============================================================
+Feedback Question 2: what worked well
+============================================================
+- MCP SDK: the spec is readable and tool registration is declarative —
+  zero to a serving endpoint in under an hour.
+- Alexa+ docs: quickstart guides are concrete and code-forward.
+- ngrok: reliable tunnel; end-to-end reachability was verified in minutes.
+- Hackathon mechanics: product feedback being a required field makes
+  friction-logging part of the artifact — excellent incentive design.
+
+============================================================
+Feedback Question 3: what needs work
+============================================================
+- MCP SDK: no documented spec-version ↔ SDK-class mapping; pinning the
+  right Streamable HTTP surface took trial and error (Friction Log #1).
+- Alexa+ docs: partner-only gating of the add-on CLI/Web Simulator is
+  stated inconsistently across pages; some setup guides omit it entirely
+  (Friction Log #2).
+- Alexa+ add-on surface: a 401 returned without WWW-Authenticate is
+  apparently intentional but non-obvious vs RFC conventions — a one-line
+  callout would prevent misreads (Friction Log #3).
+- Discoverability: @alexa-ai/addon-local-inspector is documented only
+  inside specific guides, not on the main hackathon page (Friction Log #4).
+
+============================================================
+Feedback Question 4: onboarding experience
+============================================================
+- MCP SDK: fast for hello-world (working endpoint in under an hour),
+  slower for transport details — had to read SDK source to confirm which
+  helpers implement spec 2025-11-25.
+- Alexa+ docs: good once you learn which parts are partner-gated; that
+  learning itself took a wrong turn (see Friction Log #2).
+- Overall: zero-to-working-prototype in one day; the slow part was
+  discovering what is NOT available to hackathon entrants, not building.
+
+============================================================
+Feedback Question 5: would you build with these again? Why
+============================================================
+Yes. The MCP standard is the right call — a self-hosted Streamable-HTTP
+server is a clean contract that also works for non-Alexa clients, and the
+"simulated Alexa+ experience" option made submission feasible without
+partner access. We'd build again once the preview gating opens further;
+the main ask is louder signage about what is gated (see Friction Log).
+
+============================================================
+Eligibility checkboxes(3つ全てチェック)
+============================================================
+[x] Age of majority / [x] Eligible jurisdiction(Japan) / [x] Not an
+    employee or agent of the Promotion Entities
+
+============================================================
+Which AI tools have you leveraged?
+============================================================
+Devin (Cognition's AI software engineer) as the primary implementation
+agent for the MCP server, tests, and demo-video pipeline; Gemini/Veo to
+generate the kitchen b-roll clip in Scene 1 of the demo; Piper local
+neural TTS for all narration voices.
+
+============================================================
+Level of learning derived from the project(ドロップダウン)
+============================================================
+(選択肢の最上位の正直なものを選ぶ — 実際に学んだ内容は
+「What we learned」欄参照: 音声可観測性は音声制御と別物・
+mtime遅延の実測・ACP再アタッチ不可の実測)
+
+============================================================
+AI value for your career(ドロップダウン)
+============================================================
+Yes — AIエージェント自身の運用監視(voice observability)をテーマにした
+ため、手法自体がそのまま実務に使える。
+
+============================================================
+Product feedback(旧形式の全文 — 参考・product-feedback.md)
+============================================================
+(submit/product-feedback.md を開いて全文 — 上のFeedback Q1-5に
+分解済みのため、個別欄があるフォームではQ1-5を使う)
 
 ============================================================
 補足(フォーム欄なし・作業メモ)
@@ -183,6 +380,6 @@ Product feedback(必須欄 — submit/product-feedback.mdの本文を貼る)
   testing@devpost.com と Amazon側ユーザー名をCollaboratorに追加する必要あり
 - 動画要件: 3分未満・YouTube or Vimeo・public・英語(本動画は83秒・英語)
 - 提出後のrepo凍結ルールは本ハッカソンには無い(vol5の規則・ここでは不要)
-- Friction Logは最大+10%の加点要素 — product-feedback.md に実測の発見を
-  3件(プレビューゲート記載不統一/401のWWW-Authenticate非添付/Local
-  Inspectorの発見困難性)記入済み
+- Friction Logは最大+10%の加点要素 — submit/friction-log.md に必須形式
+  (task/steps/expected vs actual/severity/workaround/suggestion)で4件
+  記入済み。フォームのFriction Log欄はURLなのでGitHub上のこのファイルを指す
